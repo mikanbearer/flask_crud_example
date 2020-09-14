@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <h5 class="card-header">
+                    {% if 'delete' in request.path %}
+                        Delete:
+                    {% else %}
+                        Detail:
+                    {% endif %}
+                    {{ user.username }}
+                </h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <p>Username</p>
+                        </div>
+                    <div class="col-9">
+                            <p>{{ user.username }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <p>Email</p>
+                    </div>
+                    <div class="col-9">
+                        <p>{{ user.email }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <p>Created at</p>
+                    </div>
+                    <div class="col-9">
+                        <p>{{ user.created_at }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <p>Updated at</p>
+                    </div>
+                    <div class="col-9">
+                        <p>{{ user.updated_at}}</p>
+                    </div>
+                </div>
+                {% if 'delete' in request.path %}
+                <form method="post">
+                    <button class="btn btn-primary" type="submit">Delete</button>
+                </form>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

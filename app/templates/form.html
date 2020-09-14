@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <h5 class="card-header">
+                    {% if user %}
+                        {% set username, email = user.username, user.email %}
+                        Update: {{ username }}
+                    {% else %}
+                        Create user
+                        {% set username, email = '', '' %}
+                    {% endif %}
+                </h5>
+                <div class="card-body">
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" value="{{ username }}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" id="email" name="email" value="{{ email }}" class="form-control">
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
